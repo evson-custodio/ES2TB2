@@ -3,13 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>ES2TB2</title>
     </h:head>
     <h:body>
         <h:form>
             <h1>Tela Login</h1>
-            <h:panelGrid columns="3">
-                
+            <h:panelGrid columns="2">
+                <h:outputLabel for="nome" value="Nome: "></h:outputLabel>
+                <h:inputText id="nome" rendered="true"></h:inputText>
+                <h:outputLabel for="senha" value="Senha: "></h:outputLabel>
+                <h:inputSecret id="senha" required="true"></h:inputSecret>
+                <h:commandButton value="Login"></h:commandButton>
             </h:panelGrid>
         </h:form>
     </h:body>

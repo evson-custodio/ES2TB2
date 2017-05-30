@@ -123,12 +123,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
-        String uNome = nome.getText();
-        String uSenha = new String(senha.getPassword());
-        usuarioController.setNome(uNome);
-        usuarioController.setSenha(uSenha);
-        System.out.println(uNome);
-        System.out.println(uSenha);
+        usuarioController.setNome(nome.getText());
+        usuarioController.setSenha(new String(senha.getPassword()));
         if(usuarioController.logar()!=null) {
             this.setVisible(false);
             TelaListar telaListar = new TelaListar(usuarioController);

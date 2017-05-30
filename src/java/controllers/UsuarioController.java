@@ -87,4 +87,14 @@ public class UsuarioController {
         
         return "index";
     }
+    
+    public String alterar() {
+        this.usuario.setNome(nome);
+        this.usuario.setSenha(senha);
+        this.usuario.setDataNascimento(dataNascimento);
+        
+        dao.update(usuario);
+        
+        return "listar";
+    }
 }

@@ -11,20 +11,17 @@ import controllers.UsuarioController;
  *
  * @author evson
  */
-public class TelaListar extends javax.swing.JFrame {
-    
+public class TelaAlterar extends javax.swing.JFrame {
+
     private UsuarioController usuarioController;
-    /**
-     * Creates new form TelaExibicao
-     */
-    public TelaListar() {
+    
+    public TelaAlterar() {
         initComponents();
     }
     
-    public TelaListar(UsuarioController usuarioController) {
+    public TelaAlterar(UsuarioController usuarioController) {
         initComponents();
         this.usuarioController = usuarioController;
-        id.setText(usuarioController.getUsuarioID().toString());
         nome.setText(usuarioController.getUsuarioNome());
         senha.setText(usuarioController.getUsuarioSenha());
         dataNascimento.setText(usuarioController.getUsuarioDataNascimento());
@@ -42,25 +39,23 @@ public class TelaListar extends javax.swing.JFrame {
 
         painel = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
-        idLabel = new javax.swing.JLabel();
-        id = new javax.swing.JLabel();
         nomeLabel = new javax.swing.JLabel();
-        nome = new javax.swing.JLabel();
+        nome = new javax.swing.JTextField();
         senhaLabel = new javax.swing.JLabel();
-        senha = new javax.swing.JLabel();
+        senha = new javax.swing.JTextField();
         dataNascimentoLabel = new javax.swing.JLabel();
-        dataNascimento = new javax.swing.JLabel();
+        dataNascimento = new javax.swing.JTextField();
+        salvar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
-        alterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(720, 480));
 
-        painel.setMinimumSize(new java.awt.Dimension(0, 0));
         painel.setPreferredSize(new java.awt.Dimension(720, 480));
         painel.setLayout(new java.awt.GridBagLayout());
 
         titulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        titulo.setText("Listar Usuario");
+        titulo.setText("Tela Alterar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -68,53 +63,48 @@ public class TelaListar extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         painel.add(titulo, gridBagConstraints);
 
-        idLabel.setText("ID:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        painel.add(idLabel, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        painel.add(id, gridBagConstraints);
-
         nomeLabel.setText("Nome:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridy = 1;
         painel.add(nomeLabel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        gridBagConstraints.gridy = 1;
         painel.add(nome, gridBagConstraints);
 
         senhaLabel.setText("Senha:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridy = 2;
         painel.add(senhaLabel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        gridBagConstraints.gridy = 2;
         painel.add(senha, gridBagConstraints);
 
         dataNascimentoLabel.setText("Data de Nascimento:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridy = 3;
         painel.add(dataNascimentoLabel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        gridBagConstraints.gridy = 3;
         painel.add(dataNascimento, gridBagConstraints);
+
+        salvar.setText("Salvar");
+        salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salvarMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        painel.add(salvar, gridBagConstraints);
 
         voltar.setText("Voltar");
         voltar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,24 +113,11 @@ public class TelaListar extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        painel.add(voltar, gridBagConstraints);
-
-        alterar.setText("Alterar");
-        alterar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                alterarMouseClicked(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        painel.add(alterar, gridBagConstraints);
+        painel.add(voltar, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,15 +135,19 @@ public class TelaListar extends javax.swing.JFrame {
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
         this.setVisible(false);
-        TelaLogin telaLogin = new TelaLogin();
-        telaLogin.setVisible(true);
-    }//GEN-LAST:event_voltarMouseClicked
-
-    private void alterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alterarMouseClicked
-        this.setVisible(false);
         TelaAlterar telaAlterar = new TelaAlterar(usuarioController);
         telaAlterar.setVisible(true);
-    }//GEN-LAST:event_alterarMouseClicked
+    }//GEN-LAST:event_voltarMouseClicked
+
+    private void salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salvarMouseClicked
+        usuarioController.setNome(nome.getText());
+        usuarioController.setSenha(senha.getText());
+        usuarioController.setDataNascimento(dataNascimento.getText());
+        usuarioController.alterar();
+        this.setVisible(false);
+        TelaListar telaListar = new TelaListar(usuarioController);
+        telaListar.setVisible(true);
+    }//GEN-LAST:event_salvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -185,35 +166,32 @@ public class TelaListar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaListar().setVisible(true);
+                new TelaAlterar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton alterar;
-    private javax.swing.JLabel dataNascimento;
+    private javax.swing.JTextField dataNascimento;
     private javax.swing.JLabel dataNascimentoLabel;
-    private javax.swing.JLabel id;
-    private javax.swing.JLabel idLabel;
-    private javax.swing.JLabel nome;
+    private javax.swing.JTextField nome;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JPanel painel;
-    private javax.swing.JLabel senha;
+    private javax.swing.JButton salvar;
+    private javax.swing.JTextField senha;
     private javax.swing.JLabel senhaLabel;
     private javax.swing.JLabel titulo;
     private javax.swing.JButton voltar;

@@ -6,22 +6,28 @@
 package views;
 
 import controllers.UsuarioController;
-import java.util.Arrays;
 
 /**
  *
  * @author evson
  */
-public class TelaLogin extends javax.swing.JFrame {
+public class TelaListar extends javax.swing.JFrame {
     
-    UsuarioController usuarioController;
-
+    private UsuarioController usuarioController;
     /**
-     * Creates new form telaLogin
+     * Creates new form TelaExibicao
      */
-    public TelaLogin() {
+    public TelaListar() {
         initComponents();
-        usuarioController = new UsuarioController();
+    }
+    
+    public TelaListar(UsuarioController usuarioController) {
+        initComponents();
+        this.usuarioController = usuarioController;
+        id.setText(usuarioController.getUsuarioID().toString());
+        nome.setText(usuarioController.getUsuarioNome());
+        senha.setText(usuarioController.getUsuarioSenha());
+        dataNascimento.setText(usuarioController.getUsuarioDataNascimento());
     }
 
     /**
@@ -36,21 +42,25 @@ public class TelaLogin extends javax.swing.JFrame {
 
         painel = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
         nomeLabel = new javax.swing.JLabel();
+        nome = new javax.swing.JLabel();
         senhaLabel = new javax.swing.JLabel();
-        nome = new javax.swing.JTextField();
-        senha = new javax.swing.JPasswordField();
-        login = new javax.swing.JButton();
-        cadastrar = new javax.swing.JButton();
+        senha = new javax.swing.JLabel();
+        dataNascimentoLabel = new javax.swing.JLabel();
+        dataNascimento = new javax.swing.JLabel();
+        voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(720, 480));
 
+        painel.setMinimumSize(new java.awt.Dimension(0, 0));
         painel.setPreferredSize(new java.awt.Dimension(720, 480));
         painel.setLayout(new java.awt.GridBagLayout());
 
         titulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        titulo.setText("Tela Login");
+        titulo.setText("Listar Usuario");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -58,55 +68,66 @@ public class TelaLogin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         painel.add(titulo, gridBagConstraints);
 
-        nomeLabel.setText("Nome:");
-        nomeLabel.setFocusable(false);
+        idLabel.setText("ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        painel.add(idLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        painel.add(id, gridBagConstraints);
+
+        nomeLabel.setText("Nome:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         painel.add(nomeLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        painel.add(nome, gridBagConstraints);
 
         senhaLabel.setText("Senha:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         painel.add(senhaLabel, gridBagConstraints);
-
-        nome.setPreferredSize(new java.awt.Dimension(119, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        painel.add(nome, gridBagConstraints);
-
-        senha.setText("jPasswordField1");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
         painel.add(senha, gridBagConstraints);
 
-        login.setText("Login");
-        login.addMouseListener(new java.awt.event.MouseAdapter() {
+        dataNascimentoLabel.setText("Data de Nascimento:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        painel.add(dataNascimentoLabel, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
+        painel.add(dataNascimento, gridBagConstraints);
+
+        voltar.setText("Voltar");
+        voltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginMouseClicked(evt);
+                voltarMouseClicked(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        painel.add(login, gridBagConstraints);
-
-        cadastrar.setText("Cadastrar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        painel.add(cadastrar, gridBagConstraints);
+        painel.add(voltar, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,19 +143,11 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
-        String uNome = nome.getText();
-        String uSenha = new String(senha.getPassword());
-        usuarioController.setNome(uNome);
-        usuarioController.setSenha(uSenha);
-        System.out.println(uNome);
-        System.out.println(uSenha);
-        if(usuarioController.logar()!=null) {
-            this.setVisible(false);
-            TelaListar telaListar = new TelaListar(usuarioController);
-            telaListar.setVisible(true);
-        }
-    }//GEN-LAST:event_loginMouseClicked
+    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        this.setVisible(false);
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_voltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -153,13 +166,13 @@ public class TelaLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaListar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -167,19 +180,22 @@ public class TelaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLogin().setVisible(true);
+                new TelaListar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cadastrar;
-    private javax.swing.JButton login;
-    private javax.swing.JTextField nome;
+    private javax.swing.JLabel dataNascimento;
+    private javax.swing.JLabel dataNascimentoLabel;
+    private javax.swing.JLabel id;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JLabel nome;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JPanel painel;
-    private javax.swing.JPasswordField senha;
+    private javax.swing.JLabel senha;
     private javax.swing.JLabel senhaLabel;
     private javax.swing.JLabel titulo;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

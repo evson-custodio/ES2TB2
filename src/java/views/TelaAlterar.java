@@ -135,8 +135,8 @@ public class TelaAlterar extends javax.swing.JFrame {
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
         this.setVisible(false);
-        TelaAlterar telaAlterar = new TelaAlterar(usuarioController);
-        telaAlterar.setVisible(true);
+        TelaListar telaListar = new TelaListar(usuarioController);
+        telaListar.setVisible(true);
     }//GEN-LAST:event_voltarMouseClicked
 
     private void salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salvarMouseClicked

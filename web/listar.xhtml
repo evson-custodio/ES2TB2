@@ -13,7 +13,10 @@
                 <h:outputLabel value="Nome: #{usuarioController.usuarioNome}"></h:outputLabel>
                 <h:outputLabel value="Senha: #{usuarioController.usuarioSenha}"></h:outputLabel>
                 <h:outputLabel value="Data de Nascimento: #{usuarioController.usuarioDataNascimento}"></h:outputLabel>
-                <h:commandButton value="Voltar" action="index"></h:commandButton>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:commandButton value="Alterar" action="#{usuarioController.alterar()}"></h:commandButton>
+                <h:commandButton value="Voltar" action="listar"></h:commandButton>
             </h:panelGrid>
         </h:form>
     </h:body>

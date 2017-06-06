@@ -89,6 +89,16 @@ public class UsuarioController {
     }
     
     public String alterar() {
+        System.out.println(usuario);
+        
+//        this.nome = this.usuario.getNome();
+//        this.senha = this.usuario.getSenha();
+//        this.dataNascimento = this.usuario.getDataNascimento();
+        
+        return "alterar";
+    }
+    
+    public String update() {
         this.usuario.setNome(nome);
         this.usuario.setSenha(senha);
         this.usuario.setDataNascimento(dataNascimento);

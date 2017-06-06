@@ -2,8 +2,9 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
+        <Node id="alterar.xhtml" x="277" y="422" zoom="true"/>
         <Node id="index.xhtml" x="213" y="137" zoom="true"/>
-        <Node id="listar.xhtml" x="380" y="290" zoom="true"/>
+        <Node id="listar.xhtml" x="357" y="299" zoom="true"/>
         <Node id="cadastrar.xhtml" x="44" y="327" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>

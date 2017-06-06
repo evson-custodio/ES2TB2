@@ -11,20 +11,16 @@ import controllers.UsuarioController;
  *
  * @author evson
  */
-public class TelaAlterar extends javax.swing.JFrame {
-
+public class TelaCadastrar extends javax.swing.JFrame {
+    
     private UsuarioController usuarioController;
-    
-    public TelaAlterar() {
+
+    /**
+     * Creates new form TelaCadastrar
+     */
+    public TelaCadastrar() {
         initComponents();
-    }
-    
-    public TelaAlterar(UsuarioController usuarioController) {
-        initComponents();
-        this.usuarioController = usuarioController;
-        nome.setText(usuarioController.getUsuarioNome());
-        senha.setText(usuarioController.getUsuarioSenha());
-        dataNascimento.setText(usuarioController.getUsuarioDataNascimento());
+        usuarioController = new UsuarioController();
     }
 
     /**
@@ -54,7 +50,7 @@ public class TelaAlterar extends javax.swing.JFrame {
         painel.setLayout(new java.awt.GridBagLayout());
 
         titulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        titulo.setText("Tela Alterar");
+        titulo.setText("Tela Cadastrar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -138,21 +134,21 @@ public class TelaAlterar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
-        this.setVisible(false);
-        TelaListar telaListar = new TelaListar(usuarioController);
-        telaListar.setVisible(true);
-    }//GEN-LAST:event_voltarMouseClicked
-
     private void salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salvarMouseClicked
         usuarioController.setNome(nome.getText());
         usuarioController.setSenha(senha.getText());
         usuarioController.setDataNascimento(dataNascimento.getText());
-        usuarioController.alterar();
+        usuarioController.cadastrar();
         this.setVisible(false);
-        TelaListar telaListar = new TelaListar(usuarioController);
-        telaListar.setVisible(true);
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
     }//GEN-LAST:event_salvarMouseClicked
+
+    private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        this.setVisible(false);
+        TelaLogin telaLogin = new TelaLogin();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_voltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -171,20 +167,20 @@ public class TelaAlterar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterar().setVisible(true);
+                new TelaCadastrar().setVisible(true);
             }
         });
     }

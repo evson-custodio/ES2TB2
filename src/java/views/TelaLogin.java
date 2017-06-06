@@ -6,7 +6,6 @@
 package views;
 
 import controllers.UsuarioController;
-import java.util.Arrays;
 
 /**
  *
@@ -44,7 +43,6 @@ public class TelaLogin extends javax.swing.JFrame {
         cadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 480));
 
         painel.setPreferredSize(new java.awt.Dimension(720, 480));
         painel.setLayout(new java.awt.GridBagLayout());
@@ -80,7 +78,7 @@ public class TelaLogin extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         painel.add(nome, gridBagConstraints);
 
-        senha.setText("jPasswordField1");
+        senha.setPreferredSize(new java.awt.Dimension(119, 21));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -101,6 +99,11 @@ public class TelaLogin extends javax.swing.JFrame {
         painel.add(login, gridBagConstraints);
 
         cadastrar.setText("Cadastrar");
+        cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -131,6 +134,12 @@ public class TelaLogin extends javax.swing.JFrame {
             telaListar.setVisible(true);
         }
     }//GEN-LAST:event_loginMouseClicked
+
+    private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
+        this.setVisible(false);
+        TelaCadastrar telaCadastrar = new TelaCadastrar();
+        telaCadastrar.setVisible(true);
+    }//GEN-LAST:event_cadastrarMouseClicked
 
     /**
      * @param args the command line arguments

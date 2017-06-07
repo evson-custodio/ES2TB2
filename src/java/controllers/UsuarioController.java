@@ -7,7 +7,7 @@ package controllers;
 
 import dao.UsuarioDAO;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import models.Usuario;
 
@@ -81,21 +81,27 @@ public class UsuarioController {
     }
     
     public String cadastrar() {
+        this.nome = "";
+        this.senha = "";
+        this.dataNascimento = "";
+        
+        return "cadastrar";
+    }
+    
+    public String alterar() {
+        this.nome = this.usuario.getNome();
+        this.senha = this.usuario.getSenha();
+        this.dataNascimento = this.usuario.getDataNascimento();
+        
+        return "alterar";
+    }
+    
+    public String create() {
         this.usuario = new Usuario(nome, senha, dataNascimento);
         
         dao.create(usuario);
         
         return "index";
-    }
-    
-    public String alterar() {
-        System.out.println(usuario);
-        
-//        this.nome = this.usuario.getNome();
-//        this.senha = this.usuario.getSenha();
-//        this.dataNascimento = this.usuario.getDataNascimento();
-        
-        return "alterar";
     }
     
     public String update() {

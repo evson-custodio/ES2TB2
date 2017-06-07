@@ -13,7 +13,7 @@
                 <h:inputText id="nome" value="#{usuarioController.nome}" rendered="true"></h:inputText>
                 <h:outputLabel for="senha" value="Senha: "></h:outputLabel>
                 <h:inputSecret id="senha" value="#{usuarioController.senha}" required="true"></h:inputSecret>
-                <h:commandButton value="Cadastrar" action="cadastrar" immediate="true"></h:commandButton>
+                <h:commandButton value="Cadastrar" action="#{usuarioController.cadastrar()}" immediate="true"></h:commandButton>
                 <h:commandButton value="Login" action="#{usuarioController.logar()}"></h:commandButton>
             </h:panelGrid>
         </h:form>

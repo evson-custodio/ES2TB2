@@ -18,7 +18,7 @@
                 <h:outputLabel for="dataNascimento" value="Data de Nascimento: "></h:outputLabel>
                 <h:inputText id="dataNascimento" value="#{usuarioController.dataNascimento}" required="true"></h:inputText>
                 
-                <h:commandButton value="Salvar" action="#{usuarioController.cadastrar()}"></h:commandButton>
+                <h:commandButton value="Salvar" action="#{usuarioController.create()}"></h:commandButton>
                 <h:commandButton value="Voltar" action="index" immediate="true"></h:commandButton>
             </h:panelGrid>
         </h:form>

@@ -139,6 +139,7 @@ public class TelaAlterar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        this.usuarioController.preencherCampos();
         this.setVisible(false);
         TelaListar telaListar = new TelaListar(usuarioController);
         telaListar.setVisible(true);
@@ -148,7 +149,7 @@ public class TelaAlterar extends javax.swing.JFrame {
         usuarioController.setNome(nome.getText());
         usuarioController.setSenha(senha.getText());
         usuarioController.setDataNascimento(dataNascimento.getText());
-        usuarioController.alterar();
+        usuarioController.update();
         this.setVisible(false);
         TelaListar telaListar = new TelaListar(usuarioController);
         telaListar.setVisible(true);

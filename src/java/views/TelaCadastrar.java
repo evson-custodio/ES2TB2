@@ -20,7 +20,11 @@ public class TelaCadastrar extends javax.swing.JFrame {
      */
     public TelaCadastrar() {
         initComponents();
-        usuarioController = new UsuarioController();
+    }
+    
+    public TelaCadastrar(UsuarioController usuarioController) {
+        initComponents();
+        this.usuarioController = usuarioController;
     }
 
     /**
@@ -138,13 +142,14 @@ public class TelaCadastrar extends javax.swing.JFrame {
         usuarioController.setNome(nome.getText());
         usuarioController.setSenha(senha.getText());
         usuarioController.setDataNascimento(dataNascimento.getText());
-        usuarioController.cadastrar();
+        usuarioController.create();
         this.setVisible(false);
-        TelaLogin telaLogin = new TelaLogin();
+        TelaLogin telaLogin = new TelaLogin(usuarioController);
         telaLogin.setVisible(true);
     }//GEN-LAST:event_salvarMouseClicked
 
     private void voltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voltarMouseClicked
+        usuarioController.limparCampos();
         this.setVisible(false);
         TelaLogin telaLogin = new TelaLogin();
         telaLogin.setVisible(true);

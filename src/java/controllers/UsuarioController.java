@@ -68,38 +68,37 @@ public class UsuarioController {
         return this.usuario.getDataNascimento();
     }
     
+    public void limparCampos() {
+        this.nome = "";
+        this.senha = "";
+        this.dataNascimento = "";
+    }
+    
+    public void preencherCampos() {
+        this.nome = this.usuario.getNome();
+        this.senha = this.usuario.getSenha();
+        this.dataNascimento = this.usuario.getDataNascimento();
+    }
+    
     public String logar() {
         List<Usuario> usuarios = dao.read(new Usuario(nome, null, null));
         
         this.usuario = (usuarios != null && usuarios.size() > 0) ? usuarios.get(0) : null;
         
         if(this.usuario != null && this.usuario.getSenha().equals(senha)) {
+            preencherCampos();
             return "listar";
         }
         
         return null;
     }
     
-    public String cadastrar() {
-        this.nome = "";
-        this.senha = "";
-        this.dataNascimento = "";
-        
-        return "cadastrar";
-    }
-    
-    public String alterar() {
-        this.nome = this.usuario.getNome();
-        this.senha = this.usuario.getSenha();
-        this.dataNascimento = this.usuario.getDataNascimento();
-        
-        return "alterar";
-    }
-    
     public String create() {
         this.usuario = new Usuario(nome, senha, dataNascimento);
         
         dao.create(usuario);
+        
+        limparCampos();
         
         return "index";
     }
@@ -111,6 +110,14 @@ public class UsuarioController {
         
         dao.update(usuario);
         
+        preencherCampos();
+        
         return "listar";
+    }
+    
+    public String cadastrar() {
+        limparCampos();
+        
+        return "cadastrar";
     }
 }

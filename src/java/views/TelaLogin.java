@@ -22,6 +22,11 @@ public class TelaLogin extends javax.swing.JFrame {
         initComponents();
         usuarioController = new UsuarioController();
     }
+    
+    public TelaLogin(UsuarioController usuarioController) {
+        initComponents();
+        this.usuarioController = usuarioController;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,8 +141,9 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMouseClicked
 
     private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
+        usuarioController.limparCampos();
         this.setVisible(false);
-        TelaCadastrar telaCadastrar = new TelaCadastrar();
+        TelaCadastrar telaCadastrar = new TelaCadastrar(usuarioController);
         telaCadastrar.setVisible(true);
     }//GEN-LAST:event_cadastrarMouseClicked
 
